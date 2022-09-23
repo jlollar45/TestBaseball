@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FieldView: View {
     
-    @State private var pitchLocations: [CGPoint] = []
+    @State private var pitches: [Pitch] = []
     
     enum PitchResult {
         case ball, strike
@@ -39,7 +39,7 @@ struct FieldView: View {
                             .border(.black)
                             .frame(height: geo.size.height * 0.31)
                             .onTapGesture(coordinateSpace: .global) { location in
-                                pitchLocations.append(location)
+                                pitches.append(Pitch(location: location))
                                 print(outerZone)
                             }
                     }
@@ -54,7 +54,7 @@ struct FieldView: View {
                             .border(.black)
                             .frame(height: geo.size.height * 0.165)
                             .onTapGesture(coordinateSpace: .global) { location in
-                                pitchLocations.append(location)
+                                pitches.append(Pitch(location: location))
                                 print(partOfZone)
                             }
                     }
@@ -62,11 +62,11 @@ struct FieldView: View {
                 .frame(width: geo.size.width * 0.65)
                 .position(x: geo.size.width / 2, y: geo.size.height / 2)
                 
-                ForEach(pitchLocations, id: \.x) {location in
+                ForEach(pitches, id: \.id) { pitch in
                     Circle()
                         .fill(.red)
                         .frame(width: geo.size.width * 0.05, height: geo.size.width * 0.05)
-                        .position(x: location.x, y: location.y)
+                        .position(x: pitch.location.x, y: pitch.location.y)
                 }
             }
             .ignoresSafeArea()
@@ -97,4 +97,9 @@ struct FieldView_Previews: PreviewProvider {
         FieldView()
             .previewInterfaceOrientation(.portrait)
     }
+}
+
+struct Pitch {
+    let id = UUID()
+    let location: CGPoint
 }
