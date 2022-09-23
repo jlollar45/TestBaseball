@@ -15,6 +15,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
+        if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+            GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
+                print("already signed in")
+            }
+        } else {
+            print("not signed in")
+        }
+        
         return true
     }
     
@@ -33,7 +41,8 @@ struct TestBaseballApp: App {
     var body: some Scene {
         WindowGroup {
             //AppTabView().environmentObject(authViewModel)
-            LoginView().environmentObject(authViewModel)
+            //LoginView().environmentObject(authViewModel)
+            FieldView()
         }
     }
 }
