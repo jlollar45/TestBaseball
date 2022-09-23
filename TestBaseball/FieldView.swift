@@ -9,28 +9,29 @@ import SwiftUI
 
 struct FieldView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @State private var pitches: [Pitch] = []
     
     let strikeZone = (1...9)
     let outerEdge = (10...13)
     
     let strikeZoneColumns = [
-        GridItem(.flexible(), spacing: 0),
-        GridItem(.flexible(), spacing: 0),
-        GridItem(.flexible(), spacing: 0)
+        GridItem(.flexible(), spacing: -1),
+        GridItem(.flexible(), spacing: -1),
+        GridItem(.flexible(), spacing: -1)
     ]
     
     let outerEdgeColumns = [
-        GridItem(.flexible(), spacing: 0),
-        GridItem(.flexible(), spacing: 0)
+        GridItem(.flexible(), spacing: -1),
+        GridItem(.flexible(), spacing: -1)
     ]
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Rectangle()
-                    .fill(.white)
-                    .border(.black)
+                    .fill(colorScheme == .dark ? .black : .white)
+                    .border(colorScheme == .dark ? .white : .black, width: 2)
                     .frame(width: geo.size.width * 0.99, height: geo.size.height * 0.8)
                     .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY)
                     .onTapGesture(coordinateSpace: .global) { location in
@@ -40,8 +41,8 @@ struct FieldView: View {
                 LazyVGrid(columns: outerEdgeColumns, spacing: 0) {
                     ForEach(outerEdge, id:\.self) {outerZone in
                         Rectangle()
-                            .fill(.white)
-                            .border(.black)
+                            .fill(colorScheme == .dark ? .black : .white)
+                            .border(colorScheme == .dark ? .white : .black, width: 2)
                             .frame(height: geo.size.height * 0.31)
                             .onTapGesture(coordinateSpace: .global) { location in
                                 pitches.append(Pitch(location: location, result: .ball))
@@ -55,8 +56,8 @@ struct FieldView: View {
                 LazyVGrid(columns: strikeZoneColumns, spacing: 0) {
                     ForEach(strikeZone, id:\.self) {partOfZone in
                         Rectangle()
-                            .fill(.white)
-                            .border(.black)
+                            .fill(colorScheme == .dark ? .black : .white)
+                            .border(colorScheme == .dark ? .white : .black, width: 2)
                             .frame(height: geo.size.height * 0.165)
                             .onTapGesture(coordinateSpace: .global) { location in
                                 pitches.append(Pitch(location: location, result: .strike))
