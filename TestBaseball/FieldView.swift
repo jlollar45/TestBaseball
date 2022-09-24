@@ -11,6 +11,7 @@ struct FieldView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @State private var pitches: [Pitch] = []
+    @State private var pitchType = 1
     
     let strikeZone = (1...9)
     let outerEdge = (10...13)
@@ -26,8 +27,25 @@ struct FieldView: View {
         GridItem(.flexible(), spacing: -1)
     ]
     
+    init() {
+        UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont.preferredFont(forTextStyle: .body)], for: .highlighted)
+            
+        UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont.preferredFont(forTextStyle: .body)], for: .normal)
+    }
+    
     var body: some View {
         GeometryReader { geo in
+            VStack {
+                Picker("Type of Pitch Thrown", selection: $pitchType) {
+                    Text("Fastball").tag(1).font(.largeTitle)
+                    Text("Curveball").tag(2)
+                    Text("Changeup").tag(4)
+                }
+                .pickerStyle(.segmented)
+                .frame(height: geo.size.height * 0.05)
+                .padding()
+            }
+            
             ZStack {
                 Rectangle()
                     .fill(colorScheme == .dark ? .black : .white)
@@ -35,7 +53,7 @@ struct FieldView: View {
                     .frame(width: geo.size.width * 0.99, height: geo.size.height * 0.8)
                     .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY)
                     .onTapGesture(coordinateSpace: .global) { location in
-                        pitches.append(Pitch(location: location, result: .ball))
+                        pitches.append(Pitch(location: location, result: .ball, type: pitchType))
                     }
                 
                 LazyVGrid(columns: outerEdgeColumns, spacing: 0) {
@@ -43,14 +61,14 @@ struct FieldView: View {
                         Rectangle()
                             .fill(colorScheme == .dark ? .black : .white)
                             .border(colorScheme == .dark ? .white : .black, width: 2)
-                            .frame(height: geo.size.height * 0.31)
+                            .frame(height: geo.size.height * 0.28)
                             .onTapGesture(coordinateSpace: .global) { location in
-                                pitches.append(Pitch(location: location, result: .ball))
+                                pitches.append(Pitch(location: location, result: .ball, type: pitchType))
                                 print(outerZone)
                             }
                     }
                 }
-                .frame(width: geo.size.width * 0.85)
+                .frame(width: geo.size.width * 0.78)
                 .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY)
                 
                 LazyVGrid(columns: strikeZoneColumns, spacing: 0) {
@@ -58,21 +76,31 @@ struct FieldView: View {
                         Rectangle()
                             .fill(colorScheme == .dark ? .black : .white)
                             .border(colorScheme == .dark ? .white : .black, width: 2)
-                            .frame(height: geo.size.height * 0.165)
+                            .frame(height: geo.size.height * 0.15)
                             .onTapGesture(coordinateSpace: .global) { location in
-                                pitches.append(Pitch(location: location, result: .strike))
+                                pitches.append(Pitch(location: location, result: .strike, type: pitchType))
                                 print(partOfZone)
                             }
                     }
                 }
-                .frame(width: geo.size.width * 0.65)
+                .frame(width: geo.size.width * 0.58)
                 .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).midY)
                 
                 ForEach(pitches, id: \.id) { pitch in
-                    Circle()
-                        .fill(pitch.result == .strike ? .red : .green)
-                        .frame(width: geo.size.width * 0.05, height: geo.size.width * 0.05)
-                        .position(x: pitch.location.x, y: pitch.location.y)
+                    ZStack {
+                        Circle()
+                            .fill(pitch.result == .strike ? .red : .green)
+                            .frame(width: geo.size.width * 0.08, height: geo.size.width * 0.08)
+                            .position(x: pitch.location.x, y: pitch.location.y)
+                            .onTapGesture{
+                                print("edited")
+                            }
+                        
+                        Text("\(pitch.getTypeString(type: pitch.type))")
+                            .frame(width: geo.size.width * 0.08, height: geo.size.width * 0.08)
+                            .position(x: pitch.location.x, y: pitch.location.y)
+                    }
+                    
                 }
             }
             .ignoresSafeArea()
@@ -91,8 +119,25 @@ struct Pitch {
     let id = UUID()
     let location: CGPoint
     let result: PitchResult
+    let type: Int
+    let typeDict = [1: "FB", 2: "CB", 3: "SL", 4: "CH", 5: "SP", 6: "KN"]
+    
+    func getTypeString(type: Int) -> String {
+        if let string = typeDict[type] {
+            return string
+        } else {
+            return "NA"
+        }
+    }
 }
 
 enum PitchResult {
     case ball, strike
+}
+
+extension UISegmentedControl {
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        self.setContentHuggingPriority(.defaultLow, for: .vertical)  // << here !!
+    }
 }
