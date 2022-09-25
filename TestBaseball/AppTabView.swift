@@ -25,6 +25,7 @@ struct AppTabView: View {
                     Label("Stats", systemImage: "chart.xyaxis.line")
                 }
         }
+        .accentColor(.cyan)
     }
 }
 
