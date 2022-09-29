@@ -42,8 +42,8 @@ struct TestBaseballApp: App {
         WindowGroup {
             //AppTabView().environmentObject(authViewModel)
             //LoginView().environmentObject(authViewModel)
-            //FieldView()
             AppTabView()
+            //PlayerPicker()
         }
     }
 }

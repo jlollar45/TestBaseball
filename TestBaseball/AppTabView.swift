@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AppTabView: View {
+    
     var body: some View {
         TabView {
             CreateView()
@@ -32,5 +33,25 @@ struct AppTabView: View {
 struct AppTabView_Previews: PreviewProvider {
     static var previews: some View {
         AppTabView()
+    }
+}
+
+struct RootPresentationModeKey: EnvironmentKey {
+    static let defaultValue: Binding<RootPresentationMode> = .constant(RootPresentationMode())
+}
+
+extension EnvironmentValues {
+    var rootPresentationMode: Binding<RootPresentationMode> {
+        get { return self[RootPresentationModeKey.self] }
+        set { self[RootPresentationModeKey.self] = newValue }
+    }
+}
+
+typealias RootPresentationMode = Bool
+
+extension RootPresentationMode {
+    
+    public mutating func dismiss() {
+        self.toggle()
     }
 }

@@ -27,6 +27,9 @@
 		CB4E44B52894D78C001FADCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4E44B42894D78C001FADCA /* Preview Assets.xcassets */; };
 		CB4E44BA2894D78C001FADCA /* TestBaseball.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB4E44B82894D78C001FADCA /* TestBaseball.xcdatamodeld */; };
 		CB4E44C32894DA16001FADCA /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E44C22894DA16001FADCA /* FieldView.swift */; };
+		CB61852A28E0BCE200D337B8 /* TeamPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61852928E0BCE200D337B8 /* TeamPicker.swift */; };
+		CB61852C28E0C3F000D337B8 /* StrikeZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61852B28E0C3F000D337B8 /* StrikeZoneView.swift */; };
+		CB8CB36528DFF86300E034DA /* PlayerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CB36428DFF86300E034DA /* PlayerPicker.swift */; };
 		CBC50C5528DC239C006833EF /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC50C5428DC239C006833EF /* GoogleSignInButton.swift */; };
 		CBC50C5728DC2481006833EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC50C5628DC2481006833EF /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,9 @@
 		CB4E44B42894D78C001FADCA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB4E44B92894D78C001FADCA /* TestBaseball.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestBaseball.xcdatamodel; sourceTree = "<group>"; };
 		CB4E44C22894DA16001FADCA /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		CB61852928E0BCE200D337B8 /* TeamPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPicker.swift; sourceTree = "<group>"; };
+		CB61852B28E0C3F000D337B8 /* StrikeZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikeZoneView.swift; sourceTree = "<group>"; };
+		CB8CB36428DFF86300E034DA /* PlayerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPicker.swift; sourceTree = "<group>"; };
 		CBC50C5328DC1D19006833EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBC50C5428DC239C006833EF /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		CBC50C5628DC2481006833EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 				CBC50C5328DC1D19006833EF /* Info.plist */,
 				CB4E44AD2894D78B001FADCA /* TestBaseballApp.swift */,
 				CB4E44C22894DA16001FADCA /* FieldView.swift */,
+				CB61852B28E0C3F000D337B8 /* StrikeZoneView.swift */,
 				CB49BD8128DA416800F64A38 /* CreateView.swift */,
 				CB4E44B12894D78C001FADCA /* Assets.xcassets */,
 				CB4E44B82894D78C001FADCA /* TestBaseball.xcdatamodeld */,
@@ -102,6 +109,8 @@
 				CB49BD9E28DA58E600F64A38 /* User.swift */,
 				CBC50C5428DC239C006833EF /* GoogleSignInButton.swift */,
 				CBC50C5628DC2481006833EF /* LoginView.swift */,
+				CB8CB36428DFF86300E034DA /* PlayerPicker.swift */,
+				CB61852928E0BCE200D337B8 /* TeamPicker.swift */,
 			);
 			path = TestBaseball;
 			sourceTree = "<group>";
@@ -200,13 +209,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB61852A28E0BCE200D337B8 /* TeamPicker.swift in Sources */,
 				CB4E44AE2894D78B001FADCA /* TestBaseballApp.swift in Sources */,
 				CB49BD8628DA448300F64A38 /* TeamView.swift in Sources */,
+				CB61852C28E0C3F000D337B8 /* StrikeZoneView.swift in Sources */,
 				CB4E44BA2894D78C001FADCA /* TestBaseball.xcdatamodeld in Sources */,
 				CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */,
 				CBC50C5528DC239C006833EF /* GoogleSignInButton.swift in Sources */,
 				CB49BD9F28DA58E600F64A38 /* User.swift in Sources */,
 				CB49BD8228DA416800F64A38 /* CreateView.swift in Sources */,
+				CB8CB36528DFF86300E034DA /* PlayerPicker.swift in Sources */,
 				CB4E44C32894DA16001FADCA /* FieldView.swift in Sources */,
 				CBC50C5728DC2481006833EF /* LoginView.swift in Sources */,
 				CB49BD8828DA449200F64A38 /* StatsView.swift in Sources */,
