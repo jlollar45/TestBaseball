@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CB423B1228E6A78A007DEA1B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB423B1128E6A78A007DEA1B /* ProfileView.swift */; };
+		CB423B1528E6ABAE007DEA1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB423B1428E6ABAE007DEA1B /* SignInView.swift */; };
+		CB423B1728E6ADE9007DEA1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */; };
 		CB49BD8228DA416800F64A38 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8128DA416800F64A38 /* CreateView.swift */; };
 		CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8328DA41A200F64A38 /* AppTabView.swift */; };
 		CB49BD8628DA448300F64A38 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8528DA448300F64A38 /* TeamView.swift */; };
 		CB49BD8828DA449200F64A38 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8728DA449200F64A38 /* StatsView.swift */; };
-		CB49BD8A28DA4ECD00F64A38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB49BD8928DA4ECD00F64A38 /* GoogleService-Info.plist */; };
 		CB49BD8D28DA4FC800F64A38 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB49BD8C28DA4FC800F64A38 /* FirebaseAnalytics */; };
 		CB49BD8F28DA4FC800F64A38 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB49BD8E28DA4FC800F64A38 /* FirebaseAuth */; };
 		CB49BD9128DA4FC800F64A38 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB49BD9028DA4FC800F64A38 /* FirebaseCrashlytics */; };
@@ -37,11 +38,13 @@
 
 /* Begin PBXFileReference section */
 		CB423B1128E6A78A007DEA1B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CB423B1328E6A904007DEA1B /* TestBaseball.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestBaseball.entitlements; sourceTree = "<group>"; };
+		CB423B1428E6ABAE007DEA1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB49BD8128DA416800F64A38 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		CB49BD8328DA41A200F64A38 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		CB49BD8528DA448300F64A38 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		CB49BD8728DA449200F64A38 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		CB49BD8928DA4ECD00F64A38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB49BD9E28DA58E600F64A38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB4E44AA2894D78B001FADCA /* TestBaseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestBaseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4E44AD2894D78B001FADCA /* TestBaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseballApp.swift; sourceTree = "<group>"; };
@@ -96,24 +99,26 @@
 		CB4E44AC2894D78B001FADCA /* TestBaseball */ = {
 			isa = PBXGroup;
 			children = (
+				CB423B1328E6A904007DEA1B /* TestBaseball.entitlements */,
 				CBC50C5328DC1D19006833EF /* Info.plist */,
 				CB4E44AD2894D78B001FADCA /* TestBaseballApp.swift */,
 				CB4E44C22894DA16001FADCA /* FieldView.swift */,
 				CB61852B28E0C3F000D337B8 /* StrikeZoneView.swift */,
 				CB49BD8128DA416800F64A38 /* CreateView.swift */,
 				CB4E44B12894D78C001FADCA /* Assets.xcassets */,
+				CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */,
 				CB4E44B82894D78C001FADCA /* TestBaseball.xcdatamodeld */,
 				CB4E44B32894D78C001FADCA /* Preview Content */,
 				CB49BD8328DA41A200F64A38 /* AppTabView.swift */,
 				CB49BD8528DA448300F64A38 /* TeamView.swift */,
 				CB49BD8728DA449200F64A38 /* StatsView.swift */,
-				CB49BD8928DA4ECD00F64A38 /* GoogleService-Info.plist */,
 				CB49BD9E28DA58E600F64A38 /* User.swift */,
 				CBC50C5428DC239C006833EF /* GoogleSignInButton.swift */,
 				CBC50C5628DC2481006833EF /* LoginView.swift */,
 				CB8CB36428DFF86300E034DA /* PlayerPicker.swift */,
 				CB61852928E0BCE200D337B8 /* TeamPicker.swift */,
 				CB423B1128E6A78A007DEA1B /* ProfileView.swift */,
+				CB423B1428E6ABAE007DEA1B /* SignInView.swift */,
 			);
 			path = TestBaseball;
 			sourceTree = "<group>";
@@ -201,7 +206,7 @@
 			files = (
 				CB4E44B52894D78C001FADCA /* Preview Assets.xcassets in Resources */,
 				CB4E44B22894D78C001FADCA /* Assets.xcassets in Resources */,
-				CB49BD8A28DA4ECD00F64A38 /* GoogleService-Info.plist in Resources */,
+				CB423B1728E6ADE9007DEA1B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +226,7 @@
 				CBC50C5528DC239C006833EF /* GoogleSignInButton.swift in Sources */,
 				CB49BD9F28DA58E600F64A38 /* User.swift in Sources */,
 				CB49BD8228DA416800F64A38 /* CreateView.swift in Sources */,
+				CB423B1528E6ABAE007DEA1B /* SignInView.swift in Sources */,
 				CB8CB36528DFF86300E034DA /* PlayerPicker.swift in Sources */,
 				CB4E44C32894DA16001FADCA /* FieldView.swift in Sources */,
 				CBC50C5728DC2481006833EF /* LoginView.swift in Sources */,
@@ -351,10 +357,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = TestBaseball/TestBaseball.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestBaseball/Preview Content\"";
-				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y58Z2JJ8PD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestBaseball/Info.plist;
@@ -369,8 +378,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parkingpal.TestBaseball;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parkingpal.TestBaseball2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Test Baseball Provisioning Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,10 +393,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = TestBaseball/TestBaseball.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestBaseball/Preview Content\"";
-				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y58Z2JJ8PD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestBaseball/Info.plist;
@@ -400,8 +414,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parkingpal.TestBaseball;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parkingpal.TestBaseball2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Test Baseball Provisioning Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

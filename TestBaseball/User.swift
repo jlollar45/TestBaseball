@@ -9,10 +9,10 @@ import Foundation
 
 struct User {
     
-    var id: Int
-    var email: String
-    var name: String
-    var isCoach: Bool
-    var isPlayer: Bool
+    var id: String
+    var email: String?
+    var name: String?
+    var isCoach: Bool?
+    var isPlayer: Bool?
     
 }
