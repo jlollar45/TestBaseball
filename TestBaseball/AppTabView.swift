@@ -36,22 +36,10 @@ struct AppTabView_Previews: PreviewProvider {
     }
 }
 
-struct RootPresentationModeKey: EnvironmentKey {
-    static let defaultValue: Binding<RootPresentationMode> = .constant(RootPresentationMode())
-}
-
-extension EnvironmentValues {
-    var rootPresentationMode: Binding<RootPresentationMode> {
-        get { return self[RootPresentationModeKey.self] }
-        set { self[RootPresentationModeKey.self] = newValue }
-    }
-}
-
-typealias RootPresentationMode = Bool
-
-extension RootPresentationMode {
+class Coordinator: ObservableObject {
+    @Published var path = NavigationPath()
     
-    public mutating func dismiss() {
-        self.toggle()
+    func popToRoot() {
+        path.removeLast(path.count)
     }
 }

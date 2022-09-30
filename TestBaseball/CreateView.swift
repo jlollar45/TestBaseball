@@ -16,9 +16,11 @@ struct CreateView: View {
     @State private var sessionSelected = false
     @State private var path = NavigationPath()
     
+    @ObservedObject var coordinator = Coordinator()
+    
     var body: some View {
         GeometryReader { geo in
-            NavigationStack(path: $path){
+            NavigationStack(path: $coordinator.path){
                 VStack (spacing: 20){
                     
                     NavigationLink(value: false) {
@@ -44,7 +46,7 @@ struct CreateView: View {
                 }
                 .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY - 80)
             }
-            .environment(\.rootPresentationMode, $sessionSelected)
+            .environmentObject(coordinator)
         }
     }
     
