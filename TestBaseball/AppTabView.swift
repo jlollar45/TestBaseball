@@ -25,6 +25,11 @@ struct AppTabView: View {
                 .tabItem{
                     Label("Stats", systemImage: "chart.xyaxis.line")
                 }
+            
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle")
+                }
         }
         .accentColor(.cyan)
     }
