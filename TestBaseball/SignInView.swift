@@ -99,7 +99,7 @@ struct SignInView: View {
                             
                             guard let user = Auth.auth().currentUser else { return }
                             let currentUser = User(id: user.uid)
-                            print(signInCoordinator.isUserCreated(currentUser: currentUser))
+                            //print(signInCoordinator.isUserCreated(currentUser: currentUser))
                             
                             print("signed in")
                         }

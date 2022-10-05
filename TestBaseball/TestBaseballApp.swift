@@ -40,8 +40,8 @@ struct TestBaseballApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //AppTabView()
-            SignInView()
+            AppTabView()
+            //SignInView()
         }
     }
 }
