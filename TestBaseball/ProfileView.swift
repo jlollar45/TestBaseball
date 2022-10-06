@@ -6,16 +6,46 @@
 //
 
 import SwiftUI
+import Firebase
+
+//func isSignedIn() -> Bool {
+//    if Auth.auth().currentUser != nil {
+//        return true
+//    } else {
+//        return false
+//    }
+//}
 
 struct ProfileView: View {
     
     @ObservedObject var coordinator = Coordinator()
+    @State private var isSignedIn: Bool?
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            
+            if let isSignedIn = isSignedIn {
+                Text(isSignedIn ? "Signed In" : "Not Signed In")
+            }
+            
+            SignInView(isSignedIn: $isSignedIn)
                 .navigationTitle("Profile")
+            
         }
+        .onAppear() {
+//            guard let user = Auth.auth().currentUser else { return }
+//            let currentUser = User(id: user.uid)
+//            print(currentUser.id)
+            if Auth.auth().currentUser != nil {
+                isSignedIn = true
+            } else {
+                isSignedIn = false
+            }
+        }
+    }
+    
+    func checkUser() -> Bool {
+        if Auth.auth().currentUser == nil { return false } else { return true }
     }
 }
 

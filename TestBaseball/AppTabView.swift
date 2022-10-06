@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct AppTabView: View {
     
@@ -48,3 +49,11 @@ class Coordinator: ObservableObject {
         path.removeLast(path.count)
     }
 }
+
+//struct FirebaseUser {
+//    @Published var fbuser = Auth.auth().currentUser
+//    
+//    func checkUser() -> Bool {
+//        if fbuser == nil { return false } else { return true }
+//    }
+//}

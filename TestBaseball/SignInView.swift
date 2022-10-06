@@ -13,7 +13,7 @@ import Firebase
 
 struct SignInView: View {
     @State var currentNonce:String?
-    var signInCoordinator = SignInCoordinator()
+    @Binding var isSignedIn: Bool?
     
     //Hashing function using CryptoKit
     func sha256(_ input: String) -> String {
@@ -98,9 +98,10 @@ struct SignInView: View {
                             }
                             
                             guard let user = Auth.auth().currentUser else { return }
-                            let currentUser = User(id: user.uid)
+                            //let currentUser = User(id: user.uid)
                             //print(signInCoordinator.isUserCreated(currentUser: currentUser))
                             
+                            isSignedIn = true
                             print("signed in")
                         }
                         
@@ -121,6 +122,8 @@ struct SignInView: View {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
+                isSignedIn = false
+                print("signed out")
             } catch let signOutError as NSError {
                 print("Error signing out: %@", signOutError)
             }
@@ -128,38 +131,12 @@ struct SignInView: View {
             Text("Sign Out")
                 .frame(width: 280, height: 45, alignment: .center)
         }
-
     }
 }
 
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+//struct SignInView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInView()
+//    }
+//}
 
-struct SignInCoordinator {
-    
-    let db = Firestore.firestore()
-    
-    func createAccount(currentUser: User) {
-        
-    }
-    
-    func isUserCreated(currentUser: User) async -> Bool {
-        let userCollection = db.collection("Users")
-        let docRef = userCollection.document("\(currentUser.id)")
-        var isUserAlready: Bool = false
-        
-        docRef.getDocument { (docSnap, error) in
-            if let docSnap = docSnap, docSnap.exists {
-                isUserAlready = true
-            } else {
-                isUserAlready = false
-            }
-        }
-         
-        return isUserAlready
-    }
-    
-}
