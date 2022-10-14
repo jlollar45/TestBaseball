@@ -58,79 +58,112 @@ struct SignInView: View {
         return result
     }
     
+    private func checkUserDocument(user: User) {
+        let reference = Firestore.firestore().collection("Users").document("\(user.uid)")
+        
+        reference.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print("document already exists, dumbass")
+            } else {
+                createUserDocument(reference: reference)
+            }
+        }
+    }
+    
+    private func createUserDocument(reference: DocumentReference) {
+        reference.setData([
+            "id": reference.documentID,
+            "firstName": "",
+            "lastName": "",
+            "throws": "",
+            "bats": "",
+            "level": ""
+        ]) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
     var body: some View {
-        SignInWithAppleButton(
-            
-            //Request
-            onRequest: { request in
-                let nonce = randomNonceString()
-                currentNonce = nonce
-                request.requestedScopes = [.fullName, .email]
-                request.nonce = sha256(nonce)
-            },
-            
-            //Completion
-            onCompletion: { result in
-                switch result {
-                case .success(let authResults):
-                    switch authResults.credential {
-                    case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                        
-                        guard let nonce = currentNonce else {
-                            fatalError("Invalid state: A login callback was received, but no login request was sent.")
-                        }
-                        guard let appleIDToken = appleIDCredential.identityToken else {
-                            fatalError("Invalid state: A login callback was received, but no login request was sent.")
-                        }
-                        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                            print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-                            return
-                        }
-                        
-                        let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString,rawNonce: nonce)
-                        Auth.auth().signIn(with: credential) { (authResult, error) in
-                            if (error != nil) {
-                                // Error. If error.code == .MissingOrInvalidNonce, make sure
-                                // you're sending the SHA256-hashed nonce as a hex string with
-                                // your request to Apple.
-                                print(error?.localizedDescription as Any)
+        
+        VStack {
+            SignInWithAppleButton(
+                
+                //Request
+                onRequest: { request in
+                    let nonce = randomNonceString()
+                    currentNonce = nonce
+                    request.requestedScopes = [.fullName, .email]
+                    request.nonce = sha256(nonce)
+                },
+                
+                //Completion
+                onCompletion: { result in
+                    switch result {
+                    case .success(let authResults):
+                        switch authResults.credential {
+                        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                            
+                            guard let nonce = currentNonce else {
+                                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+                            }
+                            guard let appleIDToken = appleIDCredential.identityToken else {
+                                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+                            }
+                            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                                 return
                             }
                             
-                            guard let user = Auth.auth().currentUser else { return }
-                            //let currentUser = User(id: user.uid)
-                            //print(signInCoordinator.isUserCreated(currentUser: currentUser))
+                            let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString,rawNonce: nonce)
+                            Auth.auth().signIn(with: credential) { (authResult, error) in
+                                if (error != nil) {
+                                    // Error. If error.code == .MissingOrInvalidNonce, make sure
+                                    // you're sending the SHA256-hashed nonce as a hex string with
+                                    // your request to Apple.
+                                    print(error?.localizedDescription as Any)
+                                    return
+                                }
+                                
+                                guard let user = Auth.auth().currentUser else { return }
+                                checkUserDocument(user: user)
+                                //let currentUser = User(id: user.uid)
+                                //print(signInCoordinator.isUserCreated(currentUser: currentUser))
+                                
+                                isSignedIn = true
+                                print("signed in")
+                            }
                             
-                            isSignedIn = true
-                            print("signed in")
+                        default:
+                            break
+                            
                         }
-                        
-                        print("\(String(describing: Auth.auth().currentUser?.uid))")
                     default:
                         break
-                        
                     }
-                default:
-                    break
+                    
                 }
-                
-            }
-        )
-        .frame(width: 280, height: 45, alignment: .center)
-        
-        Button {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                isSignedIn = false
-                print("signed out")
-            } catch let signOutError as NSError {
-                print("Error signing out: %@", signOutError)
-            }
-        } label: {
-            Text("Sign Out")
-                .frame(width: 280, height: 45, alignment: .center)
+            )
+            .frame(width: 280, height: 45, alignment: .center)
+            
+//            Button {
+//                let firebaseAuth = Auth.auth()
+//                do {
+//                    try firebaseAuth.signOut()
+//                    isSignedIn = false
+//                    print("signed out")
+//                } catch let signOutError as NSError {
+//                    print("Error signing out: %@", signOutError)
+//                }
+//            } label: {
+//                Text("Sign Out")
+//                    .frame(width: 280, height: 45, alignment: .center)
+//            }
         }
+        
     }
 }
 

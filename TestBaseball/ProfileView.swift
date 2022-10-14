@@ -23,29 +23,26 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            
-            if let isSignedIn = isSignedIn {
-                Text(isSignedIn ? "Signed In" : "Not Signed In")
+            ZStack {
+                if let isSignedIn = isSignedIn {
+                    if isSignedIn == true {
+                        ProfileFormView()
+                    } else {
+                        ProfileFormView()
+                            .blur(radius: 3)
+                        
+                        SignInView(isSignedIn: $isSignedIn)
+                    }
+                }
             }
-            
-            SignInView(isSignedIn: $isSignedIn)
-                .navigationTitle("Profile")
-            
         }
         .onAppear() {
-//            guard let user = Auth.auth().currentUser else { return }
-//            let currentUser = User(id: user.uid)
-//            print(currentUser.id)
             if Auth.auth().currentUser != nil {
                 isSignedIn = true
             } else {
                 isSignedIn = false
             }
         }
-    }
-    
-    func checkUser() -> Bool {
-        if Auth.auth().currentUser == nil { return false } else { return true }
     }
 }
 

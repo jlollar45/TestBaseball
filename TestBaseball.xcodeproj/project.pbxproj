@@ -10,6 +10,7 @@
 		CB423B1228E6A78A007DEA1B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB423B1128E6A78A007DEA1B /* ProfileView.swift */; };
 		CB423B1528E6ABAE007DEA1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB423B1428E6ABAE007DEA1B /* SignInView.swift */; };
 		CB423B1728E6ADE9007DEA1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */; };
+		CB46924428F8DF8D00BAF9B9 /* ProfileFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */; };
 		CB49BD8228DA416800F64A38 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8128DA416800F64A38 /* CreateView.swift */; };
 		CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8328DA41A200F64A38 /* AppTabView.swift */; };
 		CB49BD8628DA448300F64A38 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8528DA448300F64A38 /* TeamView.swift */; };
@@ -43,6 +44,7 @@
 		CB423B1328E6A904007DEA1B /* TestBaseball.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestBaseball.entitlements; sourceTree = "<group>"; };
 		CB423B1428E6ABAE007DEA1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormView.swift; sourceTree = "<group>"; };
 		CB49BD8128DA416800F64A38 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		CB49BD8328DA41A200F64A38 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		CB49BD8528DA448300F64A38 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				CB61852928E0BCE200D337B8 /* TeamPicker.swift */,
 				CB423B1428E6ABAE007DEA1B /* SignInView.swift */,
 				CB7473AA28E9F80400EAA433 /* AlertItem.swift */,
+				CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */,
 			);
 			path = TestBaseball;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				CB7473AB28E9F80400EAA433 /* AlertItem.swift in Sources */,
 				CB4E44AE2894D78B001FADCA /* TestBaseballApp.swift in Sources */,
 				CB49BD8628DA448300F64A38 /* TeamView.swift in Sources */,
+				CB46924428F8DF8D00BAF9B9 /* ProfileFormView.swift in Sources */,
 				CB61852C28E0C3F000D337B8 /* StrikeZoneView.swift in Sources */,
 				CB4E44BA2894D78C001FADCA /* TestBaseball.xcdatamodeld in Sources */,
 				CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */,

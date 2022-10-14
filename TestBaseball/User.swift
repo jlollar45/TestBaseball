@@ -7,12 +7,28 @@
 
 import Foundation
 
-struct User {
+//struct User {
+//
+//    var id: String
+//    var email: String?
+//    var name: String?
+//    var isCoach: Bool?
+//    var isPlayer: Bool?
+//
+//}
 
+struct CoachUser {
+    
+}
+
+struct PlayerUser {
     var id: String
-    var email: String?
-    var name: String?
-    var isCoach: Bool?
-    var isPlayer: Bool?
-
+    var firstName: String?
+    var lastName: String?
+    var bats: String?
+    var hand: String?
+    var level: String?
+    //var teams: [Team]?
+    //var bullpens: [Pens]?
+    //var bps: [BPs]?
 }
