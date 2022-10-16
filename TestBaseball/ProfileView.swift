@@ -19,17 +19,17 @@ import Firebase
 struct ProfileView: View {
     
     @ObservedObject var coordinator = Coordinator()
-    @State private var isSignedIn: Bool?
+    @State private var isSignedIn: Bool = false
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             ZStack {
                 if let isSignedIn = isSignedIn {
                     if isSignedIn == true {
-                        ProfileFormView()
+                        ProfileFormView(isSignedIn: $isSignedIn)
                     } else {
-                        ProfileFormView()
-                            .blur(radius: 3)
+                        ProfileFormView(isSignedIn: $isSignedIn)
+                            .blur(radius: 12)
                         
                         SignInView(isSignedIn: $isSignedIn)
                     }

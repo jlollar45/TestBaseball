@@ -6,37 +6,225 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct ProfileFormView: View {
     
     @ObservedObject var coordinator = Coordinator()
+    @State private var firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
+    @State private var lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
+    @State private var hand: String = UserDefaults.standard.string(forKey: "throws") ?? ""
+    @State private var bats: String  = UserDefaults.standard.string(forKey: "bats") ?? ""
+    @State private var level: String = UserDefaults.standard.string(forKey: "level") ?? ""
+    @State private var profileUpdated = false
+    let handedness = ["", "Left", "Right"]
+    let hits = ["", "Left", "Right", "Switch"]
+    let levels = ["", "Junior High School", "High School", "College"]
+    @Binding var isSignedIn: Bool
+    
+    private func checkUserDefaults() {
+        var isValid = true
+        
+        if firstName == "" {
+            isValid = false
+            print("check first name")
+        }
+        
+        if lastName == "" {
+            isValid = false
+            print("check last name")
+        }
+        
+        if hand == "" {
+            isValid = false
+            print("check hand")
+        }
+        
+        if bats == "" {
+            isValid = false
+            print("check bats")
+        }
+        
+        if level == "" {
+            isValid = false
+            print("check level")
+        }
+        
+        if isValid == true {
+            writeUserData()
+        } else {
+            print("Check Fields")
+        }
+    }
+    
+    private func writeUserData() {
+        guard let user = Auth.auth().currentUser else { return }
+        let reference = Firestore.firestore().collection("Users").document("\(user.uid)")
+        
+        UserDefaults.standard.set(firstName, forKey: "firstName")
+        UserDefaults.standard.set(lastName, forKey: "lastName")
+        UserDefaults.standard.set(hand, forKey: "throws")
+        UserDefaults.standard.set(bats, forKey: "bats")
+        UserDefaults.standard.set(level, forKey: "level")
+        
+        reference.setData([
+            "firstName": firstName,
+            "lastName": lastName,
+            "throws": hand,
+            "bats": bats,
+            "level": level
+        ], merge: true) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    private func firebaseSignOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            isSignedIn = false
+            print("signed out")
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
     
     var body: some View {
-        NavigationStack(path: $coordinator.path) {
-            Form {
-                Section("Name") {
-                    
-                }
-                
-                Section("Handedness") {
-                    
-                }
-                
-                Section("Level") {
-                    
-                }
-                
-                Section("Teams") {
-                    
+        GeometryReader { geo in
+            NavigationStack(path: $coordinator.path) {
+                VStack {
+                    if isSignedIn {
+                        Form {
+                            Section("Name") {
+                                TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
+                                
+                                TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
+                            }
+                            
+                            Section("Handedness") {
+                                Picker("Throws", selection: $hand) {
+                                    ForEach(handedness, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                                
+                                Picker("Bats", selection: $bats) {
+                                    ForEach(hits, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                            }
+                            
+                            Section("Level") {
+                                Picker("Level", selection: $level) {
+                                    ForEach(levels, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                            }
+                            
+    //                        Section("Teams") {
+    //
+    //                        }
+                            
+                            Section {
+                                Button {
+                                    checkUserDefaults()
+                                } label: {
+                                    Text("Save Profile")
+                                        .font(.title3)
+                                        .foregroundColor(.cyan)
+                                        .frame(width: geo.size.width, alignment: .center)
+                                        .padding()
+                                }
+                            }
+                            
+                            Section {
+                                Button {
+                                    firebaseSignOut()
+                                } label: {
+                                    Text("Sign Out")
+                                        .font(.title3)
+                                        .foregroundColor(.red)
+                                        .frame(width: geo.size.width, alignment: .center)
+                                        .padding()
+                                }
+                            }
+                        }
+                        .navigationTitle(firstName != "" ? "\(firstName) \(lastName)" : "Profile")
+                    } else {
+                        Form {
+                            Section("Name") {
+                                TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
+                                
+                                TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
+                            }
+                            
+                            Section("Handedness") {
+                                Picker("Throws", selection: $hand) {
+                                    ForEach(handedness, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                                
+                                Picker("Bats", selection: $bats) {
+                                    ForEach(hits, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                            }
+                            
+                            Section("Level") {
+                                Picker("Level", selection: $level) {
+                                    ForEach(levels, id: \.self) {
+                                        Text($0)
+                                    }
+                                }
+                            }
+                            
+    //                        Section("Teams") {
+    //
+    //                        }
+                            
+                            Section {
+                                Button {
+                                    checkUserDefaults()
+                                } label: {
+                                    Text("Save Profile")
+                                        .font(.title3)
+                                        .foregroundColor(.cyan)
+                                        .frame(width: geo.size.width, alignment: .center)
+                                        .padding()
+                                }
+                            }
+                            
+                            Section {
+                                Button {
+                                    firebaseSignOut()
+                                } label: {
+                                    Text("Sign Out")
+                                        .font(.title3)
+                                        .foregroundColor(.red)
+                                        .frame(width: geo.size.width, alignment: .center)
+                                        .padding()
+                                }
+                            }
+                        }
+                        .navigationTitle("Profile")
+                    }
                 }
             }
-            .navigationTitle("Profile")
         }
     }
 }
 
 struct ProfileFormView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileFormView()
+        ProfileFormView(isSignedIn: .constant(true))
     }
 }

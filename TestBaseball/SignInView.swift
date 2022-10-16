@@ -13,7 +13,8 @@ import Firebase
 
 struct SignInView: View {
     @State var currentNonce:String?
-    @Binding var isSignedIn: Bool?
+    @Binding var isSignedIn: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     //Hashing function using CryptoKit
     func sha256(_ input: String) -> String {
@@ -66,8 +67,18 @@ struct SignInView: View {
                 print("document already exists, dumbass")
             } else {
                 createUserDocument(reference: reference)
+                createUserLocally(user: user)
             }
         }
+    }
+    
+    private func createUserLocally(user: User) {
+        UserDefaults.standard.set(user.uid, forKey: "id")
+        UserDefaults.standard.set("", forKey: "firstName")
+        UserDefaults.standard.set("", forKey: "lastName")
+        UserDefaults.standard.set("", forKey: "throws")
+        UserDefaults.standard.set("", forKey: "bats")
+        UserDefaults.standard.set("", forKey: "level")
     }
     
     private func createUserDocument(reference: DocumentReference) {
@@ -148,6 +159,7 @@ struct SignInView: View {
                 }
             )
             .frame(width: 280, height: 45, alignment: .center)
+            .shadow(color: colorScheme == .dark ? Color.white.opacity(0.3) : Color.black.opacity(0.2), radius: 10, x: colorScheme == .dark ? -5 : 10, y: colorScheme == .dark ? -5 : 10)
             
 //            Button {
 //                let firebaseAuth = Auth.auth()
