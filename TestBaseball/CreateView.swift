@@ -42,7 +42,11 @@ struct CreateView: View {
                     .navigationTitle("Create Session")
                 }
                 .navigationDestination(for: Bool.self) { isBP in
-                    TeamPicker(isBattingPractice: isBP)
+                    if isBP {
+                        BPSelectView()
+                    } else {
+                        TeamPicker(isBattingPractice: isBP)
+                    }
                 }
                 .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY - 80)
             }

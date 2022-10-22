@@ -24,15 +24,13 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             ZStack {
-                if let isSignedIn = isSignedIn {
-                    if isSignedIn == true {
-                        ProfileFormView(isSignedIn: $isSignedIn)
-                    } else {
-                        ProfileFormView(isSignedIn: $isSignedIn)
-                            .blur(radius: 12)
-                        
-                        SignInView(isSignedIn: $isSignedIn)
-                    }
+                if isSignedIn == true {
+                    ProfileFormView(isSignedIn: $isSignedIn)
+                } else {
+                    ProfileFormView(isSignedIn: $isSignedIn)
+                        .blur(radius: 12)
+                    
+                    SignInView(isSignedIn: $isSignedIn)
                 }
             }
         }

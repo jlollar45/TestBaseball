@@ -160,22 +160,7 @@ struct SignInView: View {
             )
             .frame(width: 280, height: 45, alignment: .center)
             .shadow(color: colorScheme == .dark ? Color.white.opacity(0.3) : Color.black.opacity(0.2), radius: 10, x: colorScheme == .dark ? -5 : 10, y: colorScheme == .dark ? -5 : 10)
-            
-//            Button {
-//                let firebaseAuth = Auth.auth()
-//                do {
-//                    try firebaseAuth.signOut()
-//                    isSignedIn = false
-//                    print("signed out")
-//                } catch let signOutError as NSError {
-//                    print("Error signing out: %@", signOutError)
-//                }
-//            } label: {
-//                Text("Sign Out")
-//                    .frame(width: 280, height: 45, alignment: .center)
-//            }
         }
-        
     }
 }
 

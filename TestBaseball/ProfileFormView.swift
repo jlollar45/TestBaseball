@@ -98,125 +98,64 @@ struct ProfileFormView: View {
         GeometryReader { geo in
             NavigationStack(path: $coordinator.path) {
                 VStack {
-                    if isSignedIn {
-                        Form {
-                            Section("Name") {
-                                TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
-                                
-                                TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
-                            }
+                    Form {
+                        Section("Name") {
+                            TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
                             
-                            Section("Handedness") {
-                                Picker("Throws", selection: $hand) {
-                                    ForEach(handedness, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                                
-                                Picker("Bats", selection: $bats) {
-                                    ForEach(hits, id: \.self) {
-                                        Text($0)
-                                    }
+                            TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
+                        }
+                        
+                        Section("Handedness") {
+                            Picker("Throws", selection: $hand) {
+                                ForEach(handedness, id: \.self) {
+                                    Text($0)
                                 }
                             }
                             
-                            Section("Level") {
-                                Picker("Level", selection: $level) {
-                                    ForEach(levels, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
-                            
-    //                        Section("Teams") {
-    //
-    //                        }
-                            
-                            Section {
-                                Button {
-                                    checkUserDefaults()
-                                } label: {
-                                    Text("Save Profile")
-                                        .font(.title3)
-                                        .foregroundColor(.cyan)
-                                        .frame(width: geo.size.width, alignment: .center)
-                                        .padding()
-                                }
-                            }
-                            
-                            Section {
-                                Button {
-                                    firebaseSignOut()
-                                } label: {
-                                    Text("Sign Out")
-                                        .font(.title3)
-                                        .foregroundColor(.red)
-                                        .frame(width: geo.size.width, alignment: .center)
-                                        .padding()
+                            Picker("Bats", selection: $bats) {
+                                ForEach(hits, id: \.self) {
+                                    Text($0)
                                 }
                             }
                         }
-                        .navigationTitle(firstName != "" ? "\(firstName) \(lastName)" : "Profile")
-                    } else {
-                        Form {
-                            Section("Name") {
-                                TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
-                                
-                                TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
-                            }
-                            
-                            Section("Handedness") {
-                                Picker("Throws", selection: $hand) {
-                                    ForEach(handedness, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                                
-                                Picker("Bats", selection: $bats) {
-                                    ForEach(hits, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
-                            
-                            Section("Level") {
-                                Picker("Level", selection: $level) {
-                                    ForEach(levels, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
-                            
-    //                        Section("Teams") {
-    //
-    //                        }
-                            
-                            Section {
-                                Button {
-                                    checkUserDefaults()
-                                } label: {
-                                    Text("Save Profile")
-                                        .font(.title3)
-                                        .foregroundColor(.cyan)
-                                        .frame(width: geo.size.width, alignment: .center)
-                                        .padding()
-                                }
-                            }
-                            
-                            Section {
-                                Button {
-                                    firebaseSignOut()
-                                } label: {
-                                    Text("Sign Out")
-                                        .font(.title3)
-                                        .foregroundColor(.red)
-                                        .frame(width: geo.size.width, alignment: .center)
-                                        .padding()
+                        
+                        Section("Level") {
+                            Picker("Level", selection: $level) {
+                                ForEach(levels, id: \.self) {
+                                    Text($0)
                                 }
                             }
                         }
-                        .navigationTitle("Profile")
+                        
+//                        Section("Teams") {
+//
+//                        }
+                        
+                        Section {
+                            Button {
+                                checkUserDefaults()
+                            } label: {
+                                Text("Save Profile")
+                                    .font(.title3)
+                                    .foregroundColor(.cyan)
+                                    .frame(width: geo.size.width, alignment: .center)
+                                    .padding()
+                            }
+                        }
+                        
+                        Section {
+                            Button {
+                                firebaseSignOut()
+                            } label: {
+                                Text("Sign Out")
+                                    .font(.title3)
+                                    .foregroundColor(.red)
+                                    .frame(width: geo.size.width, alignment: .center)
+                                    .padding()
+                            }
+                        }
                     }
+                    .navigationTitle("Profile")
                 }
             }
         }
