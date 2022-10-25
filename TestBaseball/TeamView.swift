@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamView: View {
     
     @ObservedObject var coordinator = Coordinator()
+    private var isCoach: Bool = UserDefaults.standard.bool(forKey: "isCoach")
     
     var createTeam = false
      
@@ -17,30 +18,14 @@ struct TeamView: View {
         NavigationStack(path: $coordinator.path) {
             
             GeometryReader { geo in
-                //if user is not a part of a team
                 VStack {
-                    Text("Are you a coach?")
-                        .font(.title)
-                        .padding()
                     
-                    Text("Create a team, or join a previously created team as an assistant")
-                        .font(.caption)
-                        .padding()
-                    
-                    HStack {
-                        NavigationLink(value: true) {
-                            Text("Create Team")
-                                .frame(maxWidth: .infinity, minHeight: 40)
-                        }
-                        .buttonStyle(.bordered)
+                    if isCoach {
+                        //Create team
+                        //Search for team to be added to as assistant coach
+                    } else {
                         
-                        NavigationLink(value: true) {
-                            Text("Join Team")
-                                .frame(maxWidth: .infinity, minHeight: 40)
-                        }
-                        .buttonStyle(.bordered)
                     }
-                    
                     
                 }
                 .navigationTitle("Teams")

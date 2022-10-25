@@ -23,6 +23,7 @@ struct ProfileFormView: View {
     let hits = ["", "Left", "Right", "Switch"]
     let levels = ["", "Junior High School", "High School", "College"]
     @Binding var isSignedIn: Bool
+    @State private var showingCoachAlert = false
     
     private func checkUserDefaults() {
         var isValid = true
@@ -110,7 +111,15 @@ struct ProfileFormView: View {
                         
                         Section("Player or Coach") {
                             Toggle(isCoach ? "Coach" : "Player", isOn: $isCoach)
+                                .onChange(of: isCoach, perform: { newValue in
+                                    if isCoach {
+                                        showingCoachAlert = true
+                                    }
+                                })
                                 .tint(.cyan)
+                        }
+                        .alert(isPresented: $showingCoachAlert) {
+                            Alert(title: Text("Confirm switch to Coach"), message: Text("Must be coach to create a team, but managing team comes at an extra cost. Confirm?"), primaryButton: .default(Text("Yes")), secondaryButton: .destructive(Text("No")) { isCoach = false })
                         }
                         
                         Section("Handedness") {
