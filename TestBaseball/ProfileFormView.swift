@@ -17,6 +17,7 @@ struct ProfileFormView: View {
     @State private var hand: String = UserDefaults.standard.string(forKey: "throws") ?? ""
     @State private var bats: String  = UserDefaults.standard.string(forKey: "bats") ?? ""
     @State private var level: String = UserDefaults.standard.string(forKey: "level") ?? ""
+    @State private var isCoach: Bool = UserDefaults.standard.bool(forKey: "isCoach")
     @State private var profileUpdated = false
     let handedness = ["", "Left", "Right"]
     let hits = ["", "Left", "Right", "Switch"]
@@ -67,13 +68,15 @@ struct ProfileFormView: View {
         UserDefaults.standard.set(hand, forKey: "throws")
         UserDefaults.standard.set(bats, forKey: "bats")
         UserDefaults.standard.set(level, forKey: "level")
+        UserDefaults.standard.set(isCoach, forKey: "isCoach")
         
         reference.setData([
             "firstName": firstName,
             "lastName": lastName,
             "throws": hand,
             "bats": bats,
-            "level": level
+            "level": level,
+            "isCoach": isCoach
         ], merge: true) { error in
             if let error = error {
                 print("Error writing document: \(error)")
@@ -103,6 +106,11 @@ struct ProfileFormView: View {
                             TextField("First Name", text: $firstName, prompt: firstName == "" ? Text("First Name") : Text("\(firstName)"))
                             
                             TextField("Last Name", text: $lastName, prompt: lastName == "" ? Text("Last Name") : Text("\(lastName)"))
+                        }
+                        
+                        Section("Player or Coach") {
+                            Toggle(isCoach ? "Coach" : "Player", isOn: $isCoach)
+                                .tint(.cyan)
                         }
                         
                         Section("Handedness") {

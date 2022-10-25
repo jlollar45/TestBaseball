@@ -47,7 +47,8 @@ struct BPSelectView: View {
             .navigationDestination(for: Bool.self) { isCageBP in
                 FieldView()
             }
-            .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY - 80)
+            .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY - 40)
+            .navigationTitle("Batting Practice")
         }
     }
 }

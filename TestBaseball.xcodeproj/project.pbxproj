@@ -26,6 +26,7 @@
 		CB49BD9B28DA4FC800F64A38 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = CB49BD9A28DA4FC800F64A38 /* FirebaseRemoteConfig */; };
 		CB49BD9F28DA58E600F64A38 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD9E28DA58E600F64A38 /* User.swift */; };
 		CB49BDA228DA5B2600F64A38 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CB49BDA128DA5B2600F64A38 /* GoogleSignIn */; };
+		CB4D62E92904A850006DDDEA /* CreateTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D62E82904A850006DDDEA /* CreateTeamView.swift */; };
 		CB4E44AE2894D78B001FADCA /* TestBaseballApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E44AD2894D78B001FADCA /* TestBaseballApp.swift */; };
 		CB4E44B22894D78C001FADCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4E44B12894D78C001FADCA /* Assets.xcassets */; };
 		CB4E44B52894D78C001FADCA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB4E44B42894D78C001FADCA /* Preview Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		CB49BD8528DA448300F64A38 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		CB49BD8728DA449200F64A38 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		CB49BD9E28DA58E600F64A38 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB4D62E82904A850006DDDEA /* CreateTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamView.swift; sourceTree = "<group>"; };
 		CB4E44AA2894D78B001FADCA /* TestBaseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestBaseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4E44AD2894D78B001FADCA /* TestBaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBaseballApp.swift; sourceTree = "<group>"; };
 		CB4E44B12894D78C001FADCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				CB7473AA28E9F80400EAA433 /* AlertItem.swift */,
 				CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */,
 				CB35CA6629039E1200E49C12 /* BPSelectView.swift */,
+				CB4D62E82904A850006DDDEA /* CreateTeamView.swift */,
 			);
 			path = TestBaseball;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				CB8CB36528DFF86300E034DA /* PlayerPicker.swift in Sources */,
 				CB4E44C32894DA16001FADCA /* FieldView.swift in Sources */,
 				CBC50C5728DC2481006833EF /* LoginView.swift in Sources */,
+				CB4D62E92904A850006DDDEA /* CreateTeamView.swift in Sources */,
 				CB423B1228E6A78A007DEA1B /* ProfileView.swift in Sources */,
 				CB49BD8828DA449200F64A38 /* StatsView.swift in Sources */,
 			);

@@ -79,6 +79,7 @@ struct SignInView: View {
         UserDefaults.standard.set("", forKey: "throws")
         UserDefaults.standard.set("", forKey: "bats")
         UserDefaults.standard.set("", forKey: "level")
+        UserDefaults.standard.set(false, forKey: "isCoach")
     }
     
     private func createUserDocument(reference: DocumentReference) {
@@ -88,7 +89,8 @@ struct SignInView: View {
             "lastName": "",
             "throws": "",
             "bats": "",
-            "level": ""
+            "level": "",
+            "isCoach": false
         ]) { error in
             if let error = error {
                 print("Error writing document: \(error)")
