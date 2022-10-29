@@ -18,6 +18,7 @@ struct AddTeamMember: View {
     @State private var hand: String = ""
     
     @Binding var coaches: [AppUser]
+    @Binding var players: [AppUser]
     
     let hits = ["", "Left", "Right", "Switch"]
     let handedness = ["", "Left", "Right"]
@@ -44,7 +45,7 @@ struct AddTeamMember: View {
         if isCoach {
             coaches.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName))
         } else {
-            
+            players.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName, bats: bats, hand: hand))
         }
         
         self.presentationMode.wrappedValue.dismiss()

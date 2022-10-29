@@ -64,9 +64,9 @@ struct CreateTeamView: View {
             }
             .navigationDestination(for: AddOptions.self) { option in
                 if option == .addPlayer {
-                    AddTeamMember(isCoach: false, coaches: $coaches)
+                    AddTeamMember(isCoach: false, coaches: $coaches, players: $players)
                 } else {
-                    AddTeamMember(isCoach: true, coaches: $coaches)
+                    AddTeamMember(isCoach: true, coaches: $coaches, players: $players)
                 }
             }
             .navigationTitle("Create Team")
