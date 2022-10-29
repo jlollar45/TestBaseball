@@ -18,7 +18,7 @@ import Firebase
 //
 //}
 
-struct AppUser: Hashable {
+struct AppUser: Hashable, Identifiable {
     var id: UUID
     var firstName: String?
     var lastName: String?
