@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct CreateTeamView: View {
+    
+    @ObservedObject var coordinator = Coordinator()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //NavigationStack(path: $coordinator.path) {
+            GeometryReader { geo in
+                Form {
+                    Section("Name") {
+                        
+                    }
+                }
+            }
+        //}
     }
 }
 

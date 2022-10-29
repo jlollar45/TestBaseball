@@ -10,29 +10,65 @@ import Firebase
 
 struct AppTabView: View {
     
+    @EnvironmentObject var teams: Teams
+    @State private var selection = 0
+    @State private var resetNavigationID = UUID()
+    
+    private func fetchTeams() {
+        guard let user = Auth.auth().currentUser else { return }
+        let reference = Firestore.firestore().collection("Users").document("\(user.uid)")
+        
+        reference.getDocument { (document, error) in
+            if let document = document, document.exists {
+                guard let data = document.data() else { return }
+                
+                guard let teams = data["teams"] as? [DocumentReference] else { return }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
     var body: some View {
-        TabView {
+        
+        var selectable = Binding(
+            get: { self.selection },
+            set: { self.selection = $0
+                self.resetNavigationID = UUID()
+        })
+        
+        return TabView(selection: selectable) {
             CreateView()
                 .tabItem{
                     Label("Create Session", systemImage: "plus.square.fill")
                 }
+                .tag(0)
             
             TeamView()
                 .tabItem{
                     Label("Team", systemImage: "person.3.fill")
                 }
+                .tag(1)
             
             StatsView()
                 .tabItem{
                     Label("Stats", systemImage: "chart.xyaxis.line")
                 }
+                .tag(2)
             
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
+                .tag(3)
         }
         .accentColor(.cyan)
+        .onAppear() {
+            fetchTeams()
+        }
+        .onChange(of: selection) { newValue in
+            self.resetNavigationID = UUID()
+        }
     }
 }
 
@@ -48,6 +84,10 @@ class Coordinator: ObservableObject {
     func popToRoot() {
         path.removeLast(path.count)
     }
+}
+
+class NavigationManager: ObservableObject {
+    @Published var activeTab = 0
 }
 
 //struct FirebaseUser {

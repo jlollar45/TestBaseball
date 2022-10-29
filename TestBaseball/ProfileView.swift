@@ -76,7 +76,6 @@ struct ProfileView: View {
             }
         }
         .onAppear() {
-            print("on appear")
             if Auth.auth().currentUser != nil {
                 isSignedIn = true
             } else {

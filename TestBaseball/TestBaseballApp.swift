@@ -37,10 +37,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct TestBaseballApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var authViewModel = AuthenticationViewModel()
+    @StateObject var teams = Teams()
 
     var body: some Scene {
         WindowGroup {
             AppTabView()
+                .environmentObject(teams)
             //SignInView()
         }
     }

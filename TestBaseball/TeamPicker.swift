@@ -11,7 +11,7 @@ struct TeamPicker: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    var teams = [Team(name: "Murray High Tigers")]
+    //var teams = [Team(name: "Murray High Tigers")]
     @State private var selectedTeam = ""
     @State private var teamSelected = false
     @State private var bullpen = false
@@ -23,11 +23,11 @@ struct TeamPicker: View {
         VStack {
             List {
                 Section("Choose a Team") {
-                    ForEach(teams, id: \.self) { team in
-                        NavigationLink(value: team) {
-                            Text(team.name)
-                        }
-                    }
+//                    ForEach(teams, id: \.self) { team in
+//                        NavigationLink(value: team) {
+//                            Text(team.name)
+//                        }
+//                    }
                 }
             }
             .navigationDestination(for: Team.self) { team in
@@ -51,6 +51,4 @@ struct TeamPicker_Previews: PreviewProvider {
     }
 }
 
-struct Team: Hashable {
-    let name: String
-}
+

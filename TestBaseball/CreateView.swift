@@ -19,8 +19,9 @@ struct CreateView: View {
     @ObservedObject var coordinator = Coordinator()
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationStack(path: $coordinator.path){
+        NavigationStack(path: $coordinator.path){
+            GeometryReader { geo in
+                
                 VStack (spacing: 20){
                     
                     NavigationLink(value: false) {
@@ -48,7 +49,7 @@ struct CreateView: View {
                         TeamPicker(isBattingPractice: isBP)
                     }
                 }
-                .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY - 80)
+                .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
             }
             .environmentObject(coordinator)
         }

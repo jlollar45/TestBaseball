@@ -99,8 +99,8 @@ struct ProfileFormView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationStack(path: $coordinator.path) {
+        NavigationStack(path: $coordinator.path) {
+            GeometryReader { geo in
                 VStack {
                     Form {
                         Section("Name") {
@@ -148,7 +148,7 @@ struct ProfileFormView: View {
 //
 //                        }
                         
-                        Section {
+                        VStack {
                             Button {
                                 checkUserDefaults()
                             } label: {
@@ -158,9 +158,9 @@ struct ProfileFormView: View {
                                     .frame(width: geo.size.width, alignment: .center)
                                     .padding()
                             }
-                        }
-                        
-                        Section {
+                            
+                            Divider()
+                            
                             Button {
                                 firebaseSignOut()
                             } label: {
