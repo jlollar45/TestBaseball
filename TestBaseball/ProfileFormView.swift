@@ -119,7 +119,10 @@ struct ProfileFormView: View {
                                 .tint(.cyan)
                         }
                         .alert(isPresented: $showingCoachAlert) {
-                            Alert(title: Text("Confirm switch to Coach"), message: Text("Must be coach to create a team, but managing team comes at an extra cost. Confirm?"), primaryButton: .default(Text("Yes")), secondaryButton: .destructive(Text("No")) { isCoach = false })
+                            Alert(title: Text("Confirm switch to Coach"),
+                                  message: Text("Must be coach to create a team, but managing team comes at an extra cost. Confirm?"),
+                                  primaryButton: .default(Text("Yes")),
+                                  secondaryButton: .destructive(Text("No")) { isCoach = false })
                         }
                         
                         Section("Handedness") {

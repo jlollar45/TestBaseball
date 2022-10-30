@@ -43,9 +43,9 @@ struct AddTeamMember: View {
     
     private func saveUser() {
         if isCoach {
-            coaches.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName))
+            coaches.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName, isCoach: true))
         } else {
-            players.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName, bats: bats, hand: hand))
+            players.append(AppUser(id: UUID(), firstName: firstName, lastName: lastName, bats: bats, hand: hand, isCoach: false))
         }
         
         self.presentationMode.wrappedValue.dismiss()

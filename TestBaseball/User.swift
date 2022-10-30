@@ -33,7 +33,9 @@ struct AppUser: Hashable, Identifiable {
 
 struct Team: Hashable {
     let id: UUID
-    let name: String?
+    let documentID: String?
+    let teamName: String?
+    let mascotName: String?
     let players: [AppUser]?
     let coaches: [AppUser]?
     let level: String?

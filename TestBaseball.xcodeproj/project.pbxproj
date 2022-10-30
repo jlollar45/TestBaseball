@@ -13,6 +13,7 @@
 		CB423B1728E6ADE9007DEA1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */; };
 		CB46924428F8DF8D00BAF9B9 /* ProfileFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */; };
 		CB48E67F290DCCCE00B990F6 /* AddTeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48E67E290DCCCE00B990F6 /* AddTeamMember.swift */; };
+		CB48E681290E101400B990F6 /* ManageTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48E680290E101400B990F6 /* ManageTeamView.swift */; };
 		CB49BD8228DA416800F64A38 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8128DA416800F64A38 /* CreateView.swift */; };
 		CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8328DA41A200F64A38 /* AppTabView.swift */; };
 		CB49BD8628DA448300F64A38 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49BD8528DA448300F64A38 /* TeamView.swift */; };
@@ -50,6 +51,7 @@
 		CB423B1628E6ADE9007DEA1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB46924328F8DF8D00BAF9B9 /* ProfileFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormView.swift; sourceTree = "<group>"; };
 		CB48E67E290DCCCE00B990F6 /* AddTeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamMember.swift; sourceTree = "<group>"; };
+		CB48E680290E101400B990F6 /* ManageTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTeamView.swift; sourceTree = "<group>"; };
 		CB49BD8128DA416800F64A38 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		CB49BD8328DA41A200F64A38 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		CB49BD8528DA448300F64A38 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CB35CA6629039E1200E49C12 /* BPSelectView.swift */,
 				CB4D62E82904A850006DDDEA /* CreateTeamView.swift */,
 				CB48E67E290DCCCE00B990F6 /* AddTeamMember.swift */,
+				CB48E680290E101400B990F6 /* ManageTeamView.swift */,
 			);
 			path = TestBaseball;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				CB61852C28E0C3F000D337B8 /* StrikeZoneView.swift in Sources */,
 				CB4E44BA2894D78C001FADCA /* TestBaseball.xcdatamodeld in Sources */,
 				CB49BD8428DA41A200F64A38 /* AppTabView.swift in Sources */,
+				CB48E681290E101400B990F6 /* ManageTeamView.swift in Sources */,
 				CB7473AD28E9F9F900EAA433 /* StrikeZoneViewModel.swift in Sources */,
 				CBC50C5528DC239C006833EF /* GoogleSignInButton.swift in Sources */,
 				CB49BD9F28DA58E600F64A38 /* User.swift in Sources */,

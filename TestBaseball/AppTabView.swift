@@ -22,7 +22,20 @@ struct AppTabView: View {
             if let document = document, document.exists {
                 guard let data = document.data() else { return }
                 
-                guard let teams = data["teams"] as? [DocumentReference] else { return }
+                guard let teamsData = data["teams"] as? [DocumentReference] else { return }
+                
+                for team in teamsData {
+                    team.getDocument { (document, error) in
+                        guard let document = document, document.exists else { return }
+                        guard let data = document.data() else { return }
+                        let teamName = data["teamName"] as? String ?? ""
+                        let mascotName = data["mascotName"] as? String ?? ""
+                        let level = data["level"] as? String ?? ""
+                        
+                        let localTeam = Team(id: UUID(), documentID: document.documentID, teamName: teamName, mascotName: mascotName, players: nil, coaches: nil, level: level)
+                        teams.teams.append(localTeam)
+                    }
+                }
             } else {
                 print("Document does not exist")
             }
